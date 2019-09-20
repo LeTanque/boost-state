@@ -1,11 +1,16 @@
-import React from 'react'
+import React from 'react';
+import RegisterGoog from "./Auth/RegisterGoog.jsx";
+import RegisterGql from "./Auth/RegisterGql.jsx";
+
 
 
 const Revitalize = () => {
 
     return (
         <>
-            <h3>Revitalize</h3>
+            <h2>Revitalize</h2>
+            <RegisterGoog />
+            <RegisterGql />
         </>
     );
 }

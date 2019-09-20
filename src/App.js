@@ -1,4 +1,5 @@
 import React from 'react';
+import {BrowserRouter, Route} from "react-router-dom";
 import logo from './logo.svg';
 
 // Views
@@ -9,6 +10,11 @@ import Revitalize from "./views/Revitalize";
 // Apollo
 import { ApolloProvider } from "@apollo/react-hooks";
 import { todoClient, revitalizeClient } from "./config/apollo.js";
+
+// Component
+import AuthenticateUser from "./views/Revitalize/Auth/AuthenticateUser.jsx";
+import Dashboard from "./views/Revitalize/Dashboard";
+import RegisterGoog from "./views/Revitalize/Auth/RegisterGoog.jsx";
 
 
 class App extends React.Component {
@@ -23,23 +29,46 @@ class App extends React.Component {
 
   render() {
     return (
-      
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <img src={logo} className="App-logo" alt="logo" />
-          <img src={logo} className="App-logo" alt="logo" />
-        </header>
-        <ApolloProvider client={todoClient}>
-          <Todos />
-        </ApolloProvider>
+      <BrowserRouter >
+        <div className="App">
+          <header className="App-header">
+            <img src={logo} className="App-logo" alt="logo" />
+            <img src={logo} className="App-logo" alt="logo" />
+            <img src={logo} className="App-logo" alt="logo" />
+          </header>
+          <ApolloProvider client={todoClient}>
+            <Todos />
+          </ApolloProvider>
 
-        <a href="https://revitalize-production.herokuapp.com/auth/google">Click to join!</a>
-        
-        <ApolloProvider client={revitalizeClient}>
-          <Revitalize />
-        </ApolloProvider>
-      </div>
+          <ApolloProvider client={revitalizeClient}>
+            <Revitalize />
+
+            <Route 
+              exact
+              path="/oauth/:token"
+              component={AuthenticateUser}
+            />
+
+            <Route 
+              exact
+              path="/dashboard"
+              component={Dashboard}
+            />
+
+            <Route 
+              exact
+              path="/login"
+              component={Dashboard}
+            />
+
+          </ApolloProvider>
+        </div>
+      
+      
+      
+      
+      </BrowserRouter>
+      
     )
   }
 }

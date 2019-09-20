@@ -33,7 +33,7 @@ const AddTodo = () => {
     });
     
     const [
-        updateTodo,
+        // updateTodo,
         { 
             loading: mutationLoading, 
             error: mutationError 
@@ -41,7 +41,10 @@ const AddTodo = () => {
     ] = useMutation(UPDATE_TODO);
     
 
-    const [ state, setState ] = useState({
+    const [ 
+        state, 
+        // setState 
+    ] = useState({
         updating: false,
         selectedTodoId: "",
     });
@@ -108,8 +111,8 @@ const AddTodo = () => {
                 // let input;
         
                 return (
-                    <div key={id} >
-                        <div>{type}</div>
+                    <span key={id} >
+                        <span>{type} &nbsp;</span>
                         
                         {mutationLoading && <p>Loading...</p>}
                         {mutationError && <p>Error :( Please try again</p>}
@@ -120,7 +123,7 @@ const AddTodo = () => {
                         >
                             Update
                         </button> */}
-                    </div>
+                    </span>
                 );
             })
             : null

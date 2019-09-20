@@ -59,3 +59,20 @@ code {
     max-width: 800px;
 }
 
+
+
+.register-form {
+    form {
+        display: flex;
+        flex-direction: column;
+        input {
+            background-color: #131313;
+            color: white;
+            margin-bottom: 15px;
+            padding: 10px;
+            border: none;
+        }
+    }
+}
+
+
